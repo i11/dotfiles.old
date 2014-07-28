@@ -40,6 +40,9 @@ sudo pmset -a standbydelay 86400
 #	"/System/Library/CoreServices/Menu Extras/Battery.menu" \
 #	"/System/Library/CoreServices/Menu Extras/Clock.menu"
 
+# Show battery percent
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+
 # Set highlight color to green
 #defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
 
@@ -67,6 +70,9 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 
 # Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+# Disable animation
+defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
 
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
@@ -720,6 +726,15 @@ cp -r init/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ 
 
 # Hide the app in the background if it’s not the front-most window
 #defaults write com.twitter.twitter-mac HideInBackground -bool true
+
+###############################################################################
+# Performance optimize                                                        #
+###############################################################################
+# Rebuild font cache
+atsutil databases -remove
+
+# Repair permissions
+diskutil repairPermissions /
 
 ###############################################################################
 # Kill affected applications                                                  #
