@@ -95,7 +95,7 @@ function gitio() {
 }
 
 # Start an HTTP server from a directory, optionally specifying the port
-function server() {
+function httpserver() {
 	local port="${1:-8000}";
 	sleep 1 && open "http://localhost:${port}/" &
 	# Set the default Content-Type to `text/plain` instead of `application/octet-stream`
@@ -137,7 +137,7 @@ function digga() {
 }
 
 # UTF-8-encode a string of Unicode symbols
-function escape() {
+function ut8encode() {
 	printf "\\\x%s" $(printf "$@" | xxd -p -c1 -u);
 	# print a newline unless we’re piping the output to another program
 	if [ -t 1 ]; then
@@ -155,7 +155,7 @@ function unidecode() {
 }
 
 # Get a character’s Unicode code point
-function codepoint() {
+function utf8codepoint() {
 	perl -e "use utf8; print sprintf('U+%04X', ord(\"$@\"))";
 	# print a newline unless we’re piping the output to another program
 	if [ -t 1 ]; then

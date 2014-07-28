@@ -1,6 +1,6 @@
-" Use the Solarized Dark theme
-set background=dark
-colorscheme solarized
+" Use the cobalt theme
+" set background=dark
+colorscheme cobalt
 
 " Make Vim more useful
 set nocompatible
@@ -30,6 +30,10 @@ if exists("&undodir")
 	set undodir=~/.vim/undo
 endif
 
+" watch for file changes
+set autoread
+" show matching brackets
+set showmatch
 " Don’t create backups when editing files in certain directories
 set backupskip=/tmp/*,/private/tmp/*
 
@@ -47,6 +51,16 @@ syntax on
 set cursorline
 " Make tabs as wide as two spaces
 set tabstop=2
+" 2 spaces for indentation
+set shiftwidth=2
+" Spaces instead of tabs
+set expandtab
+" better backspace and tab functionality
+set smarttab
+" auto indenting
+set autoindent
+" smart indenting
+set smartindent
 " Show “invisible” characters
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 set list
@@ -74,13 +88,15 @@ set showmode
 set title
 " Show the (partial) command as it’s being typed
 set showcmd
-" Use relative line numbers
-if exists("&relativenumber")
-	set relativenumber
-	au BufReadPost * set relativenumber
-endif
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
+
+" enable filetype detection
+filetype on
+" enable filetype-specific indenting
+filetype indent on
+" enable filetype-specific plugins
+filetype plugin on
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
