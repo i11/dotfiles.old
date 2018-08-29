@@ -19,7 +19,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 #sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "0x6D746873"
 
 # Set standby delay to 24 hours (default is 1 hour)
-sudo pmset -a standbydelay 86400
+#sudo pmset -a standbydelay 86400
 
 # Disable the sound effects on boot
 #sudo nvram SystemAudioVolume=" "
@@ -39,9 +39,6 @@ sudo pmset -a standbydelay 86400
 #	"/System/Library/CoreServices/Menu Extras/AirPort.menu" \
 #	"/System/Library/CoreServices/Menu Extras/Battery.menu" \
 #	"/System/Library/CoreServices/Menu Extras/Clock.menu"
-
-# Show battery percent
-defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
 # Set highlight color to green
 #defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
@@ -70,9 +67,6 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 
 # Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
-
-# Disable animation
-defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
 
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
@@ -168,7 +162,7 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 #defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
 
 # Disable “natural” (Lion-style) scrolling
-#defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+#defaults irite NSGlobalDomain com.apple.swipescrolldirection -bool false
 
 # Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
@@ -559,13 +553,10 @@ TERM_PROFILE='Solarized Dark xterm-256color';
 CURRENT_PROFILE="$(defaults read com.apple.terminal 'Default Window Settings')";
 if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
 	open "${HOME}/init/${TERM_PROFILE}.terminal";
-	sleep 2; # Wait a bit to make sure the theme is loaded
+	sleep 1; # Wait a bit to make sure the theme is loaded
 	defaults write com.apple.terminal 'Default Window Settings' -string "${TERM_PROFILE}";
 	defaults write com.apple.terminal 'Startup Window Settings' -string "${TERM_PROFILE}";
 fi;
-
-# Set shell to bash (otherwise dot-files might not be loaded)
-defaults write com.apple.terminal Shell -string "/bin/bash"
 
 # Enable “focus follows mouse” for Terminal.app and all X11 apps
 # i.e. hover over a window and start typing in it without clicking first
@@ -681,7 +672,7 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 ###############################################################################
 
 # Install Sublime Text settings
-cp -r init/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings 2> /dev/null
+#cp -r init/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings 2> /dev/null
 
 ###############################################################################
 # Transmission.app                                                            #
@@ -728,21 +719,12 @@ cp -r init/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ 
 #defaults write com.twitter.twitter-mac HideInBackground -bool true
 
 ###############################################################################
-# Performance optimize                                                        #
-###############################################################################
-# Rebuild font cache
-atsutil databases -remove
-
-# Repair permissions
-diskutil repairPermissions /
-
-###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
-for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
-	"Dock" "Finder" "Mail" "Messages" "Safari" "SizeUp" "SystemUIServer" \
-	"Terminal" "Transmission" "Twitter" "iCal"; do
-	killall "${app}" > /dev/null 2>&1
-done
+#for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
+#	"Dock" "Finder" "Mail" "Messages" "Safari" "SizeUp" "SystemUIServer" \
+#	"Terminal" "Transmission" "Twitter" "iCal"; do
+#	killall "${app}" > /dev/null 2>&1
+#done
 echo "Done. Note that some of these changes require a logout/restart to take effect."

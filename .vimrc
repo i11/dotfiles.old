@@ -1,6 +1,8 @@
 " Use the cobalt theme
-" set background=dark
-colorscheme cobalt
+set background=dark
+colorscheme darkblue
+
+set paste
 
 " Make Vim more useful
 set nocompatible
@@ -62,8 +64,8 @@ set autoindent
 " smart indenting
 set smartindent
 " Show “invisible” characters
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
-set list
+" set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+" set list
 " Highlight searches
 set hlsearch
 " Ignore case of searches

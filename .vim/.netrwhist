@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/iljbob/ansible/aws2/tasks/ec2'
+let g:netrw_dirhist_2='/Users/iljbob/dev/puppet/puppet-profile/manifests/selenium/node'
+let g:netrw_dirhist_3='/Users/iljbob/dev/puppet/puppet-profile/test/integration/selenium-node'
+let g:netrw_dirhist_4='/Users/iljbob/dev/puppet/puppet-profile/manifests/selenium/node'
+let g:netrw_dirhist_5='/Users/iljbob/Documents/Arduino/libraries/ETHER_28J60'
+let g:netrw_dirhist_6='/Users/iljbob/personal/arduino-cmake/CMake'
+let g:netrw_dirhist_7='/Users/iljbob/ansible/aws2/vars/ec2'
